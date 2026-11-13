@@ -4,6 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#08090b" />
+    <script>
+      if (performance.getEntriesByType('navigation')[0]?.type === 'reload') {
+        history.scrollRestoration = 'manual'
+        if (location.hash) history.replaceState(history.state, '', location.pathname + location.search)
+        document.documentElement.classList.add('reset-scroll')
+        addEventListener('pageshow', () => {
+          scrollTo(0, 0)
+          requestAnimationFrame(() => {
+            scrollTo(0, 0)
+            requestAnimationFrame(() => document.documentElement.classList.remove('reset-scroll'))
+          })
+        }, { once: true })
+      }
+    </script>
     <meta name="description" content="Привет, я Денис Зюбан. Делаю понятные и удобные сайты для людей и небольших компаний — от идеи до запуска." />
     <title>Денис Зюбан — разработка сайтов</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
