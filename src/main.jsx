@@ -275,7 +275,7 @@ function App() {
   }, [introDone])
   return <div className="site-shell">
     <CustomCursor />
-    <div className="site-header-frame fixed inset-x-0 top-0 z-50 bg-[#08090b]">
+    <div className="site-header-frame fixed inset-x-0 top-0 z-50">
       <header className="site-header mx-auto grid w-full max-w-[1440px] grid-cols-[1fr_auto] items-center px-6 md:px-10 lg:grid-cols-[1fr_auto_1fr] xl:px-16">
         <a className="brand" href="#top" aria-label="Денис Зюбан — на главную"><span className="brand-mark">D<span>∕</span>Z</span><span className="brand-text">Денис Зюбан<small>веб-разработчик</small></span></a>
         <nav className="hidden items-center justify-self-center gap-8 lg:flex" aria-label="Основная навигация"><a href="#about">Обо мне</a><a href="#services">Услуги</a><a href="#approach">Подход</a><a href="#contacts">Контакты</a></nav>
