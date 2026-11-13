@@ -175,3 +175,18 @@ span.element-reveal{display:inline-block}
 }
 .site-header-frame .site-header{z-index:1}
 
+/* Cover the phone's top safe area and prevent content from bouncing above the header. */
+:root{--safe-top:env(safe-area-inset-top, 0px)}
+html,body{overscroll-behavior-y:none}
+.site-header-frame{padding-top:var(--safe-top)}
+.site-header-spacer{height:calc(96px + var(--safe-top))}
+.hero{min-height:calc(100svh - 96px - var(--safe-top))}
+@media(max-width:640px){
+  .site-header-spacer{height:calc(76px + var(--safe-top))}
+  .hero{min-height:calc(100svh - 76px - var(--safe-top))}
+}
+@media(max-height:850px) and (min-width:641px){
+  .site-header-spacer{height:calc(80px + var(--safe-top))}
+  .hero{min-height:calc(100svh - 80px - var(--safe-top))}
+}
+
