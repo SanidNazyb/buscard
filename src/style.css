@@ -167,13 +167,14 @@ span.element-reveal{display:inline-block}
   inset:0 0 -34px;
   z-index:0;
   pointer-events:none;
-  background:linear-gradient(to bottom,rgba(8,9,11,.82) 0%,rgba(8,9,11,.68) 58%,rgba(8,9,11,0) 100%);
+  background:linear-gradient(to bottom,rgba(8,9,11,.98) 0%,rgba(8,9,11,.97) 72%,rgba(8,9,11,.75) 82%,rgba(8,9,11,0) 100%);
   -webkit-backdrop-filter:blur(18px) saturate(115%);
   backdrop-filter:blur(18px) saturate(115%);
-  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 58%,transparent 100%);
-  mask-image:linear-gradient(to bottom,#000 0%,#000 58%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 100%);
 }
 .site-header-frame .site-header{z-index:1}
+.reset-scroll{scroll-behavior:auto!important}
 
 /* Cover the phone's top safe area and prevent content from bouncing above the header. */
 :root{--safe-top:env(safe-area-inset-top, 0px)}
