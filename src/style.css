@@ -149,3 +149,13 @@ span.element-reveal{display:inline-block}
   .service-grid article:nth-child(3){padding-left:0}
 }
 
+/* Draw decorative symbols as vectors so mobile fonts cannot substitute emoji. */
+.tab-icon{display:block;flex:none;width:15px;height:15px}
+.toolbar-end{display:flex;align-items:center;gap:4px;letter-spacing:normal}
+.toolbar-end i{display:block;width:3px;height:3px;border-radius:50%;background:currentColor}
+.inline-arrow{display:inline-block;flex:none;width:14px;height:14px;vertical-align:-2px}
+.hero-bottom a .inline-arrow{width:16px;height:16px;margin-left:8px;vertical-align:-4px}
+.row-symbol{display:block;width:24px;height:24px;justify-self:end}
+.contact-links a span:last-child{display:inline-flex;align-items:center;gap:6px}
+@media(max-width:640px){.tab-icon{width:12px;height:12px}.row-symbol{width:20px;height:20px}}
+
