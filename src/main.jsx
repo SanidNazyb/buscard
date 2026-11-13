@@ -18,6 +18,16 @@ function Icon({ type }) {
   return <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.94 17.35C5.88 17.35 1.86 12.52 1.7 4.5h3.54c.12 5.88 2.7 8.37 4.74 8.88V4.5h3.33v5.07c2.01-.22 4.12-2.53 4.83-5.07h3.33a9.82 9.82 0 0 1-4.46 6.42 10.15 10.15 0 0 1 5.27 6.43h-3.67c-.78-2.43-2.73-4.32-5.3-4.58v4.58h-.37Z"/></svg>
 }
 
+function DecorativeIcon({ type, className = '' }) {
+  const paths = {
+    diamond: <path d="M12 2.5 21.5 12 12 21.5 2.5 12Z" />,
+    asterisk: <><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93 4.93 19.07" /></>,
+    arrow: <><path d="M5 19 19 5M8 5h11v11" /></>,
+    down: <><path d="M12 4v16m-7-7 7 7 7-7" /></>,
+  }
+  return <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">{paths[type]}</svg>
+}
+
 function Socials({ large = false }) {
   return <div className={`flex items-center ${large ? 'gap-3' : 'gap-2.5'}`} aria-label="Социальные сети">
     <a className={`social-link ${large ? 'social-link-large' : ''}`} href={vk} target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте Дениса Зюбана"><Icon type="vk" /><span className="sr-only">ВКонтакте</span></a>
@@ -122,10 +132,10 @@ function CodeWindow({ visible, panelRef }) {
     <div className="code-toolbar">
       <div className="window-dots"><i /><i /><i /></div>
       <div className="code-tabs">
-        <button className={tab === 'html' ? 'selected' : ''} onClick={() => setTab('html')}><span className="tab-icon html-icon">◇</span> index.html</button>
-        <button className={tab === 'css' ? 'selected' : ''} onClick={() => setTab('css')}><span className="tab-icon css-icon">✳</span> style.css</button>
+        <button className={tab === 'html' ? 'selected' : ''} onClick={() => setTab('html')}><DecorativeIcon type="diamond" className="tab-icon html-icon" /> index.html</button>
+        <button className={tab === 'css' ? 'selected' : ''} onClick={() => setTab('css')}><DecorativeIcon type="asterisk" className="tab-icon css-icon" /> style.css</button>
       </div>
-      <span className="toolbar-end">● ● ●</span>
+      <span className="toolbar-end" aria-hidden="true"><i /><i /><i /></span>
     </div>
     <div className="code-body">
       <div className="editor-line-numbers" ref={numbersRef} aria-hidden="true">{lines.map((_, i) => <div key={i}>{String(i + 1).padStart(2, '0')}</div>)}</div>
@@ -282,7 +292,7 @@ function App() {
           <p>Привет, я Денис. Делаю сайты, на которых сразу понятно, чем вы занимаетесь и почему к вам стоит обратиться.</p>
         </div>
         <HeroScene onDone={finishIntro} />
-        <div className="hero-bottom"><span>От первого разговора до готового сайта</span><a href="#about">Узнать обо мне <span>↓</span></a></div>
+        <div className="hero-bottom"><span>От первого разговора до готового сайта</span><a href="#about">Узнать обо мне <DecorativeIcon type="down" className="inline-arrow" /></a></div>
       </section>
 
       <section id="about" className="section-divider about-section mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-32 xl:px-16">
@@ -291,16 +301,16 @@ function App() {
       </section>
 
       <section className="experience-section bg-[#101114] py-24 md:py-32"><div className="mx-auto max-w-[1440px] px-6 md:px-10 xl:px-16"><div className="section-heading"><span className="section-index">02 / Путь</span><h2 className="text-reveal"><RevealLine>Учился делать сайты.</RevealLine><RevealLine><span>Теперь делаю их для людей.</span></RevealLine></h2></div><div className="experience-list">
-        <div className="experience-row"><span className="year">2024</span><div><h3>Разобрался с основами</h3><p>Изучал HTML и CSS, собирал первые страницы и учился делать их удобными на разных экранах. Пробовал разные сетки и внимательно смотрел, как дизайн ведёт себя в браузере.</p></div><span className="row-symbol">↗</span></div>
-        <div className="experience-row"><span className="year">2025</span><div><h3>Перешёл к настоящим задачам</h3><p>Стал делать сайты для знакомых и небольших команд. Появились задачи посложнее: продумать структуру, собрать несколько страниц, добавить формы и проверить, что всё работает.</p></div><span className="row-symbol">↗</span></div>
-        <div className="experience-row"><span className="year">2026</span><div><h3>Делаю сайты на заказ</h3><p>Работаю с React и продолжаю углубляться во фронтенд. Слежу за тем, чтобы сайт быстро открывался, хорошо выглядел на телефоне и был удобен вам после запуска.</p></div><span className="row-symbol">↗</span></div>
+        <div className="experience-row"><span className="year">2024</span><div><h3>Разобрался с основами</h3><p>Изучал HTML и CSS, собирал первые страницы и учился делать их удобными на разных экранах. Пробовал разные сетки и внимательно смотрел, как дизайн ведёт себя в браузере.</p></div><DecorativeIcon type="arrow" className="row-symbol" /></div>
+        <div className="experience-row"><span className="year">2025</span><div><h3>Перешёл к настоящим задачам</h3><p>Стал делать сайты для знакомых и небольших команд. Появились задачи посложнее: продумать структуру, собрать несколько страниц, добавить формы и проверить, что всё работает.</p></div><DecorativeIcon type="arrow" className="row-symbol" /></div>
+        <div className="experience-row"><span className="year">2026</span><div><h3>Делаю сайты на заказ</h3><p>Работаю с React и продолжаю углубляться во фронтенд. Слежу за тем, чтобы сайт быстро открывался, хорошо выглядел на телефоне и был удобен вам после запуска.</p></div><DecorativeIcon type="arrow" className="row-symbol" /></div>
       </div></div></section>
 
       <section id="services" className="services-section mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-32 xl:px-16"><div className="section-heading"><span className="section-index">03 / Что я делаю</span><h2 className="text-reveal"><RevealLine>Какой сайт</RevealLine><RevealLine><span>вам нужен?</span></RevealLine></h2></div><div className="service-grid"><article><span className="service-num">01</span><h3>Сайт-визитка</h3><p>Если нужно коротко и ясно рассказать о себе или своём деле. Покажем услуги, ответим на главные вопросы и оставим удобный способ связаться.</p></article><article><span className="service-num">02</span><h3>Лендинг</h3><p>Одна страница для продукта, услуги или события. Проведём человека от первого знакомства до заявки без лишних отвлечений.</p></article><article><span className="service-num">03</span><h3>Обновление сайта</h3><p>Если старый сайт уже не отражает ваше дело или им неудобно пользоваться, пересмотрю структуру и дизайн, а заодно приведу в порядок мобильную версию.</p></article><article><span className="service-num">04</span><h3>Сайт с личным кабинетом</h3><p>Нужны регистрация, личные кабинеты или чаты? Сделаю сайт, где пользователи смогут входить в аккаунт, управлять своими данными и общаться друг с другом.</p></article></div></section>
 
       <section id="approach" className="approach-section bg-[#111519] text-[#f1f2ef]"><div className="mx-auto grid max-w-[1440px] gap-14 px-6 py-24 md:px-10 md:py-32 lg:grid-cols-[.9fr_1.1fr] xl:px-16"><div><span className="section-index">04 / Как работаю</span><h2 className="text-reveal"><RevealLine>Начнём</RevealLine><RevealLine>с простого</RevealLine><RevealLine><i>разговора.</i></RevealLine></h2><p className="approach-intro">Расскажите, чем вы занимаетесь и чего ждёте от сайта. Я помогу разобраться, что показать в первую очередь и как сделать это понятным для ваших клиентов.</p></div><div className="approach-steps"><div><span>01</span><div><h3>Знакомимся</h3><p>Обсудим вашу задачу, будущих посетителей и примеры сайтов, которые вам нравятся. Выясним, без чего точно не обойтись.</p></div></div><div><span>02</span><div><h3>Продумываю структуру и дизайн</h3><p>Намечу страницы и покажу, как будет выглядеть сайт. Вы сможете оценить направление до того, как начнётся разработка.</p></div></div><div><span>03</span><div><h3>Собираю и проверяю</h3><p>Сверстаю сайт для телефона и компьютера, добавлю нужные функции и проверю, что всё работает как задумано.</p></div></div><div><span>04</span><div><h3>Запускаем</h3><p>Помогу опубликовать сайт и вместе с вами пройду по нему ещё раз. Покажу, что где находится и как им пользоваться.</p></div></div></div></div></section>
 
-      <section id="contacts" className="contact-section mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-32 xl:px-16"><span className="section-index">05 / Контакты</span><div className="contact-layout"><div><h2 className="text-reveal"><RevealLine>Есть идея?</RevealLine><RevealLine><span>Напишите мне.</span></RevealLine></h2><p>Опишите задачу как получится — даже если пока нет чёткого плана. Обсудим её и поймём, с чего начать.</p></div><div className="contact-links"><a href={tg} target="_blank" rel="noopener noreferrer"><span>Telegram</span><span>@deniszyuban ↗</span></a><a href={vk} target="_blank" rel="noopener noreferrer"><span>ВКонтакте</span><span>deniszyuban ↗</span></a></div></div></section>
+      <section id="contacts" className="contact-section mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-32 xl:px-16"><span className="section-index">05 / Контакты</span><div className="contact-layout"><div><h2 className="text-reveal"><RevealLine>Есть идея?</RevealLine><RevealLine><span>Напишите мне.</span></RevealLine></h2><p>Опишите задачу как получится — даже если пока нет чёткого плана. Обсудим её и поймём, с чего начать.</p></div><div className="contact-links"><a href={tg} target="_blank" rel="noopener noreferrer"><span>Telegram</span><span>@deniszyuban <DecorativeIcon type="arrow" className="inline-arrow" /></span></a><a href={vk} target="_blank" rel="noopener noreferrer"><span>ВКонтакте</span><span>deniszyuban <DecorativeIcon type="arrow" className="inline-arrow" /></span></a></div></div></section>
     </main>
     <footer className="footer"><div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-6 py-8 md:flex-row md:items-center md:justify-between md:px-10 xl:px-16"><div className="footer-brand">Денис Зюбан <span>© 2026</span></div><span className="footer-note">Спасибо, что заглянули.</span><Socials large /></div></footer>
   </div>
